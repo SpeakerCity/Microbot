@@ -1787,7 +1787,7 @@ public class Rs2GameObject {
             // deliberately not consulted: solid objects fail line-of-sight from everywhere
             // (docs/entity-guides), which is how the old opt-in checkCanReach path deadlocked.
             if (CantReachTargetRecovery.retryExhausted(
-                    Microbot.cantReachTargetRetries, Rs2Random.between(3, 5))) {
+                    Microbot.cantReachTargetRetries, 10)) {
                 Microbot.pauseAllScripts.compareAndSet(false, true);
                 Microbot.showMessage("Your bot tried to interact with an object for "
                         + Microbot.cantReachTargetRetries + " times but failed. Please take a look at what is happening.");

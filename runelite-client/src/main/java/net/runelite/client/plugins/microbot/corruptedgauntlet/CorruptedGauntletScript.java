@@ -188,7 +188,7 @@ public class CorruptedGauntletScript extends StateMachineScript<CorruptedGauntle
         for (Map.Entry<Integer, Integer> item : scene.inventory.entrySet()) {
             int gained = item.getValue() - beforeChest.getOrDefault(item.getKey(), 0);
             if (gained <= 0) continue;
-            int price = item.getKey() == ItemID.COINS_995 ? 1 : item.getKey() == ItemID.CRYSTAL_SHARD
+            long price = item.getKey() == ItemID.COINS_995 ? 1 : item.getKey() == ItemID.CRYSTAL_SHARD
                     ? config.crystalShardValue() : Math.max(0, Microbot.getItemManager().getItemPrice(item.getKey()));
             session.profit += (long) gained * price;
         }
