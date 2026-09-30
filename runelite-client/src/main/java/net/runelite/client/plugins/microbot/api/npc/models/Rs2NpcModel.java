@@ -196,7 +196,7 @@ public class Rs2NpcModel extends Rs2ActorModel implements IEntity
                     Microbot.isCantReachTargetDetectionEnabled, Microbot.cantReachTarget)) {
                 if (!hasLineOfSight()) {
                     if (CantReachTargetRecovery.retryExhausted(
-                            Microbot.cantReachTargetRetries, Rs2Random.between(3, 5))) {
+                            Microbot.cantReachTargetRetries, 10)) {
                         Microbot.pauseAllScripts.compareAndSet(false, true);
                         Microbot.showMessage("Your bot tried to interact with an NPC for "
                                 + Microbot.cantReachTargetRetries + " times but failed. Please take a look at what is happening.");

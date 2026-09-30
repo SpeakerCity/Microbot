@@ -235,6 +235,18 @@ tasks.register<JavaExec>("exportEmbeddedUpstreamPlannerComparison") {
     outputs.upToDateWhen { false }
 }
 
+tasks.register<Jar>("dartFletchingJar") {
+    group = "build"
+    description = "Build the standalone Dart Fletching plugin for Microbot's plugin folder"
+    dependsOn(tasks.compileJava)
+    archiveFileName.set("ClubsDartPlugin.jar")
+    from(sourceSets.main.get().output.classesDirs) {
+        include("net/runelite/client/plugins/microbot/dartfletching/**")
+    }
+    isPreserveFileTimestamps = false
+    isReproducibleFileOrder = true
+}
+
 tasks.register<Test>("runUnitTests") {
     group = "verification"
     description = "Run unit tests only (no client, no login) — safe for CI"
